@@ -1,0 +1,143 @@
+[gd_scene load_steps=17 format=3 uid="uid://camo325q0l3il"]
+
+[ext_resource type="Script" uid="uid://rhohmu7y4so6" path="res://control.gd" id="1_62e2m"]
+[ext_resource type="AudioStream" uid="uid://b5kjw5p1qx4pd" path="res://assets/audio/audio_huss.wav" id="2_qtu10"]
+[ext_resource type="Texture2D" uid="uid://bj2mlckygd8xe" path="res://assets/images/tableradio_fr_fr.png" id="3_qtu10"]
+[ext_resource type="Texture2D" uid="uid://dneke7mn3hyma" path="res://assets/images/piece_foncer.png" id="4_6a6wx"]
+[ext_resource type="Texture2D" uid="uid://byf4kbd0pwbdp" path="res://assets/images/ampoule_fr.png" id="4_ee4bf"]
+[ext_resource type="Texture2D" uid="uid://bfe2jodjxa463" path="res://assets/images/fil_fr.png" id="4_fj5cn"]
+[ext_resource type="Texture2D" uid="uid://cfolj2wgqt34r" path="res://assets/images/pixil-frame-0(11).png" id="5_6a6wx"]
+[ext_resource type="Texture2D" uid="uid://dgnvh6tjpray5" path="res://assets/images/ampoulefermer.png" id="8_6a6wx"]
+[ext_resource type="Texture2D" uid="uid://ugwx1712t6yp" path="res://assets/animation/eclair.png" id="9_sky72"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ytqx"]
+atlas = ExtResource("9_sky72")
+region = Rect2(0, 0, 505, 361)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxugv"]
+atlas = ExtResource("9_sky72")
+region = Rect2(505, 0, 505, 361)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eh0v1"]
+atlas = ExtResource("9_sky72")
+region = Rect2(1010, 0, 505, 361)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_am1vj"]
+atlas = ExtResource("9_sky72")
+region = Rect2(1515, 0, 505, 361)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g31lc"]
+atlas = ExtResource("9_sky72")
+region = Rect2(2020, 0, 505, 361)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knq72"]
+atlas = ExtResource("9_sky72")
+region = Rect2(2525, 0, 505, 361)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xvdhi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ytqx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxugv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eh0v1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_am1vj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g31lc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knq72")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_62e2m")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.484
+anchor_top = 0.705
+anchor_right = 0.484
+anchor_bottom = 0.705
+offset_left = -49.5681
+offset_top = -49.84
+offset_right = 50.4319
+offset_bottom = 50.16
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_qtu10")
+
+[node name="piece_foncer" type="Sprite2D" parent="."]
+position = Vector2(576, 326)
+scale = Vector2(1.33878, 1.33878)
+texture = ExtResource("4_6a6wx")
+
+[node name="lumiere" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(575, 338)
+scale = Vector2(1.28673, 1.28673)
+texture = ExtResource("5_6a6wx")
+
+[node name="fil" type="Sprite2D" parent="."]
+position = Vector2(566, 306)
+scale = Vector2(1, 1.0319)
+texture = ExtResource("4_fj5cn")
+
+[node name="ampoule" type="Sprite2D" parent="."]
+position = Vector2(529, 63)
+rotation = 3.14159
+scale = Vector2(0.162237, 0.162237)
+texture = ExtResource("4_ee4bf")
+
+[node name="CheckButton" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 507.0
+offset_top = 66.0
+offset_right = 551.0
+offset_bottom = 90.0
+
+[node name="tableradio" type="Sprite2D" parent="."]
+position = Vector2(556.188, 494.058)
+scale = Vector2(0.351969, 0.351969)
+texture = ExtResource("3_qtu10")
+
+[node name="ampoulefermer" type="Sprite2D" parent="."]
+position = Vector2(574, 326)
+scale = Vector2(1.32589, 1.34082)
+texture = ExtResource("8_6a6wx")
+
+[node name="eclair1" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(724, 412)
+scale = Vector2(0.557479, 0.557479)
+sprite_frames = SubResource("SpriteFrames_xvdhi")
+
+[node name="eclair2" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(761, 439)
+rotation = 0.472984
+scale = Vector2(0.557479, 0.557479)
+sprite_frames = SubResource("SpriteFrames_xvdhi")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
